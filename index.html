@@ -201,50 +201,61 @@
         </div>
     </section>
         <section class="products section" id="products">
-                <h2 class="section__title">The Most <br> Devoured Pizzas</h2>
-                <div class="products__container container grid">
-                    <article class="products__card">
-                        <img src="assests/product-1.png" alt="image" class="products__img">
-                        <h3 class="products__name">Vegetarian <br>Pizza</h3>
-                        <span class="products__price">$18</span>
-                        <button class="products__button">
-                            <i class="ri-shopping-bag-3-fill"></i>
-                        </button>
-                    </article>
-                    <article class="products__card">
-                        <img src="assests/product-2.png" alt="image" class="products__img">
-                        <h3 class="products__name">Pepperoni <br>Pizza</h3>
-                        <span class="products__price">$20</span>
-                        <button class="products__button">
-                            <i class="ri-shopping-bag-3-fill"></i>
-                        </button>
-                    </article>
-                    <article class="products__card">
-                        <img src="assests/product-3.png" alt="image" class="products__img">
-                        <h3 class="products__name">Margherita <br>Pizza</h3>
-                        <span class="products__price">$19</span>
-                        <button class="products__button">
-                            <i class="ri-shopping-bag-3-fill"></i>
-                        </button>
-                    </article>
-                    <article class="products__card">
-                        <img src="assests/product-4.png" alt="image" class="products__img">
-                        <h3 class="products__name">Mushroom <br>Pizza</h3>
-                        <span class="products__price">$22</span>
-                        <button class="products__button">
-                            <i class="ri-shopping-bag-3-fill"></i>
-                        </button>
-                    </article>
-                    <article class="products__card">
-                        <img src="assests/product-5.png" alt="image" class="products__img">
-                        <h3 class="products__name">Italian <br>Pizza</h3>
-                        <span class="products__price">$12 </span>
-                        <button class="products__button">
-                            <i class="ri-shopping-bag-3-fill"></i>
-                        </button>
-                    </article>
-                </div>
-        </section>
+  <h2 class="section__title">The Most <br> Devoured Pizzas</h2>
+  <div class="products__container container grid">
+    <!-- Product 1 -->
+    <article class="products__card" data-id="1" data-name="Vegetarian Pizza" data-price="18">
+      <img src="assests/product-1.png" alt="Vegetarian Pizza" class="products__img">
+      <h3 class="products__name">Vegetarian <br> Pizza</h3>
+      <span class="products__price">$18</span>
+      <button class="products__button add-to-cart" data-id="1" data-name="Vegetarian Pizza" data-price="18">
+        <i class="ri-shopping-bag-3-fill"></i>
+      </button>
+    </article>
+    <!-- Product 2 -->
+    <article class="products__card" data-id="2" data-name="Pepperoni Pizza" data-price="20">
+      <img src="assests/product-2.png" alt="Pepperoni Pizza" class="products__img">
+      <h3 class="products__name">Pepperoni <br> Pizza</h3>
+      <span class="products__price">$20</span>
+      <button class="products__button add-to-cart" data-id="2" data-name="Pepperoni Pizza" data-price="20">
+        <i class="ri-shopping-bag-3-fill"></i>
+      </button>
+    </article>
+    <!-- Product 3 -->
+    <article class="products__card" data-id="3" data-name="Margherita Pizza" data-price="19">
+      <img src="assests/product-3.png" alt="Margherita Pizza" class="products__img">
+      <h3 class="products__name">Margherita <br> Pizza</h3>
+      <span class="products__price">$19</span>
+      <button class="products__button add-to-cart" data-id="3" data-name="Margherita Pizza" data-price="19">
+        <i class="ri-shopping-bag-3-fill"></i>
+      </button>
+    </article>
+    <!-- Product 4 -->
+    <article class="products__card" data-id="4" data-name="Mushroom Pizza" data-price="22">
+      <img src="assests/product-4.png" alt="Mushroom Pizza" class="products__img">
+      <h3 class="products__name">Mushroom <br> Pizza</h3>
+      <span class="products__price">$22</span>
+      <button class="products__button add-to-cart" data-id="4" data-name="Mushroom Pizza" data-price="22">
+        <i class="ri-shopping-bag-3-fill"></i>
+      </button>
+    </article>
+    <!-- Product 5 -->
+    <article class="products__card" data-id="5" data-name="Italian Pizza" data-price="12">
+      <img src="assests/product-5.png" alt="Italian Pizza" class="products__img">
+      <h3 class="products__name">Italian <br> Pizza</h3>
+      <span class="products__price">$12</span>
+      <button class="products__button add-to-cart" data-id="5" data-name="Italian Pizza" data-price="12">
+        <i class="ri-shopping-bag-3-fill"></i>
+      </button>
+    </article>
+  </div>
+</section>
+
+<!-- Global Cart Display (Place this where desired, e.g., fixed at bottom-left) -->
+<div id="cart-display" style="position: fixed; bottom: 20px; left: 20px; background: var(--first-color); color: var(--white-color); padding: 0.75rem 1.5rem; border-radius: 50px; z-index: 1100;">
+  Cart: <span id="cart-count">0</span> item(s) | Total: $<span id="cart-total">0.00</span>
+</div>
+
         
   <section class="menu section" id="menu">
     <div class="menu__container container">
@@ -443,6 +454,24 @@
 <button id="feedback-chatbot-toggle" title="Give Feedback">
   <i class="ri-feedback-line"></i>
 </button>
+<!-- Open Cart Button -->
+<button id="open-cart" title="See Cart">
+  <i class="ri-shopping-bag-3-fill"></i> Cart (<span id="cart-count">0</span>)
+</button>
+
+<!-- Cart Modal -->
+<div id="cart-modal" class="cart-modal">
+  <div class="cart-modal__content">
+    <span id="close-cart" class="close-cart">&times;</span>
+    <h2>Your Cart</h2>
+    <div id="cart-items">
+      <!-- Cart items will be dynamically inserted here -->
+    </div>
+    <div class="cart-modal__total">
+      Total: $<span id="cart-total">0.00</span>
+    </div>
+  </div>
+</div>
 
 
 <script src="swiper-bundle.min.js"></script>

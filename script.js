@@ -526,3 +526,91 @@ searchInput.addEventListener("input", filterPizzas);
 document.addEventListener("DOMContentLoaded", () => {
   renderPizzas(pizzaData);
 });
+
+
+// Global cart array to hold added products
+let cart = [];
+
+// Add a product to the cart
+function addToCart(product) {
+  const existing = cart.find(item => item.id === product.id);
+  if (existing) {
+    existing.quantity++;
+  } else {
+    product.quantity = 1;
+    cart.push(product);
+  }
+  updateCartDisplay();
+}
+
+// Update the floating cart display (item count and total price)
+function updateCartDisplay() {
+  const cartCountEl = document.getElementById("cart-count");
+  const cartTotalEl = document.getElementById("cart-total");
+
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPrice = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
+  cartCountEl.textContent = totalItems;
+  cartTotalEl.textContent = totalPrice.toFixed(2);
+}
+
+// Render cart items and total into the modal
+function renderCartModal() {
+  const cartItemsEl = document.getElementById("cart-items");
+  const cartModalTotalEl = document.getElementById("cart-modal-total");
+
+  // Clear any previous items
+  cartItemsEl.innerHTML = "";
+
+  let total = 0;
+  cart.forEach(item => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+    const div = document.createElement("div");
+    div.classList.add("cart-item");
+    div.innerHTML = `
+      <strong class="cart-item-name">${item.name}</strong> x${item.quantity}
+      <span class="cart-item-price">$${itemTotal.toFixed(2)}</span>
+    `;
+    cartItemsEl.appendChild(div);
+  });
+  cartModalTotalEl.textContent = total.toFixed(2);
+}
+
+// Open the cart modal (make it visible)
+function openCartModal() {
+  renderCartModal();
+  document.getElementById("cart-modal").style.display = "flex";
+}
+
+// Close the cart modal (hide it)
+function closeCartModal() {
+  document.getElementById("cart-modal").style.display = "none";
+}
+
+// Set up event listeners once the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", () => {
+  // Attach event listeners to each "Add to Cart" button
+  document.querySelectorAll(".add-to-cart").forEach(btn => {
+    btn.addEventListener("click", () => {
+      // Read product details from the closest parent with class "products__card"
+      const card = btn.closest(".products__card");
+      const product = {
+        id: parseInt(card.dataset.id, 10),
+        name: card.dataset.name,
+        price: parseFloat(card.dataset.price)
+      };
+      addToCart(product);
+    });
+  });
+
+  // Open the cart modal when the floating cart display is clicked
+  document.getElementById("cart-display").addEventListener("click", openCartModal);
+
+  // Close the cart modal when the close button is clicked
+  document.getElementById("cart-close").addEventListener("click", closeCartModal);
+});
