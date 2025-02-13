@@ -33,6 +33,13 @@
             <li>
                 <a href="#contact" class="nav__link">Contact</a>
             </li>
+            <li>
+                <a href="#menu" class="nav__link">Our Menu</a>
+            </li>
+            <li>
+                <a href="#franchise" class="nav__link">Join Us</a>
+            </li>
+           
         </ul>
         <div class="nav__close" id="nav__close">
         <i class="ri-close-line"></i> 
@@ -238,6 +245,69 @@
                     </article>
                 </div>
         </section>
+        
+  <section class="menu section" id="menu">
+    <div class="menu__container container">
+      <h2 class="section__title">Our Pizzas</h2>
+
+      <!-- Search Bar -->
+      <div class="menu__filters">
+        <div class="menu__search">
+          <input
+            type="text"
+            placeholder="Search pizzas..."
+            id="menu-search"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <!-- Pizza Grid (Dynamically populated by JS) -->
+      <div class="menu__grid" id="pizza-menu"></div>
+    </div>
+  </section>
+  <!-- Franchise Inquiry Section -->
+<section class="franchise section" id="franchise">
+  <div class="franchise__container container">
+    <h2 class="section__title">Join Our Franchise</h2>
+    <p class="franchise__intro">
+      Fill in the form below to inquire about franchise opportunities and bring the CheesyBites experience to your area.
+    </p>
+    <form class="franchise__form" id="franchise-form">
+      <div class="form__group">
+        <span class="form__icon"><i class="ri-user-line"></i></span>
+        <div class="form__input-wrap">
+          <input type="text" id="name" name="name" placeholder=" " required>
+          <label for="name">Full Name</label>
+        </div>
+      </div>
+      <div class="form__group">
+        <span class="form__icon"><i class="ri-mail-line"></i></span>
+        <div class="form__input-wrap">
+          <input type="email" id="email" name="email" placeholder=" " required>
+          <label for="email">Email Address</label>
+        </div>
+      </div>
+      <div class="form__group">
+        <span class="form__icon"><i class="ri-phone-line"></i></span>
+        <div class="form__input-wrap">
+          <input type="tel" id="phone" name="phone" placeholder=" " required>
+          <label for="phone">Phone Number</label>
+        </div>
+      </div>
+      <div class="form__group">
+        <span class="form__icon"><i class="ri-pencil-line"></i></span>
+        <div class="form__input-wrap">
+          <textarea id="message" name="message" placeholder=" " required></textarea>
+          <label for="message">Tell us about your interest</label>
+        </div>
+      </div>
+      <button type="submit" class="button">Submit Inquiry</button>
+    </form>
+    <div class="form__message" id="form-message"></div>
+  </div>
+</section>
+
         <section class="contact section" id="contact">
             <div class="contact__container container grid">
                 <div class="contact__data">
@@ -270,7 +340,6 @@
                             <address class="contact__address">
                                 NST-Sonipat-Haryana <br>
                                 Residency-1
-                                4-th Floor 420,423,426
                             </address>
                             <a target="_blank" href="https://maps.app.goo.gl/67FkMtLbadEdygzX9 " class="contact__map">
                                 
@@ -291,6 +360,10 @@
                 <img src="assests/sticker-onion.svg" alt="image" class="contact__sticker-1">
             </div>
         </section>
+
+
+
+
 </main>
 <footer class="footer">
     <div class="footer__container container grid">
@@ -317,7 +390,7 @@
             <div>
                 <h3 class="footer__title">Subscribe for Discounts</h3>
                 <form action="" class="footer__form">
-                    <input type="email" placeholder="email" class="footer__input">
+                    <input type="email" required placeholder="email" class="footer__input">
                     <button type="submit" class="footer__button button">Subscribe</button>
                 </form>
             </div>
@@ -335,6 +408,43 @@
 <a href="#" class="scrollup" id="scroll-up">
     <i class="ri-arrow-up-line"></i>
 </a>
+<!-- Chatbot Container -->
+<div class="chatbot">
+  <div class="chatbot__header">
+    <h4>Need Help?</h4>
+    <button id="chatbot-close" title="Close Chat">&times;</button>
+  </div>
+  <div class="chatbot__body" id="chatbot-body">
+    <!-- Chat messages and options will be appended here -->
+  </div>
+</div>
+
+<!-- Chatbot Toggle Button -->
+<button id="chatbot-toggle" title="Chat with us">
+  <i class="ri-chat-smile-line"></i>
+</button>
+<!-- Feedback Chatbot Container -->
+<div class="feedback-chatbot" id="feedback-chatbot">
+  <div class="feedback-chatbot__header">
+    <h4>Feedback</h4>
+    <button id="feedback-chatbot-close" title="Close Feedback">&times;</button>
+  </div>
+  <div class="feedback-chatbot__body" id="feedback-chatbot-body">
+    <!-- Conversation messages and option buttons will be appended here -->
+  </div>
+  <div class="feedback-chatbot__input" id="feedback-chatbot-input-container">
+    <!-- Only displayed if additional comments are needed -->
+    <input type="text" id="feedback-chatbot-input" placeholder="Type your comment..." autocomplete="off">
+    <button id="feedback-chatbot-send">Send</button>
+  </div>
+</div>
+
+<!-- Feedback Chatbot Toggle Button -->
+<button id="feedback-chatbot-toggle" title="Give Feedback">
+  <i class="ri-feedback-line"></i>
+</button>
+
+
 <script src="swiper-bundle.min.js"></script>
 <script src="script.js"></script>
 </body>

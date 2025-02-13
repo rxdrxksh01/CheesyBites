@@ -1139,3 +1139,603 @@ justify-self: end;
   }
   
 }
+/* Animated Gradient Background for Franchise Section */
+.franchise {
+  background: linear-gradient(135deg, rgba(255,245,235,0.95), rgba(255,230,220,0.95));
+  animation: gradientShift 8s ease infinite;
+  padding: 3rem 1rem;
+  border-radius: 1rem;
+  margin: 2rem 0;
+  box-shadow: 0 8px 24px hsla(353, 100%, 8%, 0.1);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Centered container */
+.franchise__container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Intro text */
+.franchise__intro {
+  margin: 1rem 0 2rem;
+  color: var(--text-color-light);
+  font-size: var(--normal-font-size);
+}
+
+/* Form styling */
+.franchise__form {
+  background-color: var(--white-color);
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px hsla(24, 32%, 75%, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.franchise__form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px hsla(24, 32%, 75%, 0.3);
+}
+
+/* Form Group */
+.form__group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.form__icon {
+  font-size: 1.5rem;
+  margin-right: 0.75rem;
+  color: var(--first-color);
+}
+
+/* Input Wrap for animated label */
+.form__input-wrap {
+  position: relative;
+  flex: 1;
+}
+
+.form__input-wrap input,
+.form__input-wrap textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fefefe;
+}
+
+.form__input-wrap input:focus,
+.form__input-wrap textarea:focus {
+  border-color: var(--first-color);
+  box-shadow: 0 0 0 3px rgba(255,230,220,0.5);
+  outline: none;
+}
+
+/* Textarea specific styling */
+.form__input-wrap textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Animated label */
+.form__input-wrap label {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  background: transparent;
+  padding: 0 0.25rem;
+  color: var(--text-color-light);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.form__input-wrap input:focus + label,
+.form__input-wrap input:not(:placeholder-shown) + label,
+.form__input-wrap textarea:focus + label,
+.form__input-wrap textarea:not(:placeholder-shown) + label {
+  top: -0.75rem;
+  left: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--first-color);
+  background-color: var(--white-color);
+}
+
+/* Button styling */
+.button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--first-color), var(--first-color-alt));
+  color: var(--white-color);
+  border: none;
+  border-radius: 0.5rem;
+  font-family: var(--second-font);
+  font-size: var(--h2-font-size);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px hsla(353, 100%, 8%, 0.2);
+}
+
+.button:hover {
+  transform: scale(1.03);
+  background: linear-gradient(135deg, var(--first-color-alt), var(--first-color));
+}
+
+/* Form Message */
+.form__message {
+  margin-top: 1rem;
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show message when active */
+.form__message.active {
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media screen and (min-width: 768px) {
+  .franchise__container {
+    text-align: left;
+  }
+  .form__group {
+    margin-bottom: 1.75rem;
+  }
+}
+
+/* Chatbot Toggle Button */
+#chatbot-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--first-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+#chatbot-toggle:hover {
+  background-color: var(--first-color-alt);
+}
+
+/* Chatbot Window */
+.chatbot {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 320px;
+  max-height: 450px;
+  background-color: var(--white-color);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px hsla(0, 0%, 0%, 0.2);
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+/* Chatbot Header */
+.chatbot__header {
+  background-color: var(--first-color);
+  color: var(--white-color);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatbot__header h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.chatbot__header button {
+  background: none;
+  border: none;
+  color: var(--white-color);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+/* Chatbot Body */
+.chatbot__body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background: #f9f9f9;
+}
+
+/* Chat messages */
+.chatbot__message {
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  max-width: 80%;
+  word-wrap: break-word;
+  font-size: 0.875rem;
+}
+
+.chatbot__message--user {
+  background-color: var(--first-color-alt);
+  color: var(--white-color);
+  margin-left: auto;
+  text-align: right;
+}
+
+.chatbot__message--bot {
+  background-color: #eee;
+  color: #333;
+  margin-right: auto;
+}
+
+/* Predefined Options (buttons) */
+.chatbot__option {
+  display: inline-block;
+  background-color: var(--first-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 12px;
+  margin: 5px 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.chatbot__option:hover {
+  background-color: var(--first-color-alt);
+  transform: scale(1.03);
+}
+
+/* Container for option buttons */
+.chatbot__options {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Feedback Chatbot Toggle Button */
+#feedback-chatbot-toggle {
+   bottom: 100px; 
+  right: 20px;
+  z-index: 1001;
+  
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--first-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+#feedback-chatbot-toggle:hover {
+  background-color: var(--first-color-alt);
+}
+
+/* Feedback Chatbot Window */
+.feedback-chatbot {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 320px;
+  max-height: 500px;
+  background-color: var(--white-color);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px hsla(0, 0%, 0%, 0.2);
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+/* Chatbot Header */
+.feedback-chatbot__header {
+  background-color: var(--first-color);
+  color: var(--white-color);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feedback-chatbot__header h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.feedback-chatbot__header button {
+  background: none;
+  border: none;
+  color: var(--white-color);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+/* Chatbot Body */
+.feedback-chatbot__body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background: #f9f9f9;
+}
+
+/* Chat Messages */
+.feedback-chatbot__message {
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  max-width: 80%;
+  word-wrap: break-word;
+  font-size: 0.875rem;
+}
+
+.feedback-chatbot__message--user {
+  background-color: var(--first-color-alt);
+  color: var(--white-color);
+  margin-left: auto;
+  text-align: right;
+}
+
+.feedback-chatbot__message--bot {
+  background-color: #eee;
+  color: #333;
+  margin-right: auto;
+}
+
+/* Option Buttons */
+.feedback-chatbot__option {
+  display: inline-block;
+  background-color: var(--first-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 12px;
+  margin: 5px 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.feedback-chatbot__option:hover {
+  background-color: var(--first-color-alt);
+  transform: scale(1.03);
+}
+
+.feedback-chatbot__options {
+  margin-top: 10px;
+  text-align: center;
+}
+
+
+.feedback-chatbot__input {
+  display: none;
+  border-top: 1px solid #ddd;
+}
+
+.feedback-chatbot__input input {
+  width: calc(100% - 60px);
+  border: none;
+  padding: 10px;
+  font-size: 0.875rem;
+}
+
+.feedback-chatbot__input input:focus {
+  outline: none;
+}
+
+.feedback-chatbot__input button {
+  border: none;
+  background-color: var(--first-color);
+  color: var(--white-color);
+  padding: 0 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.feedback-chatbot__input button:hover {
+  background-color: var(--first-color-alt);
+}
+#chatbot-toggle {
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+#feedback-chatbot-toggle {
+  bottom: 100px; 
+  right: 20px;
+  z-index: 1001; 
+}
+/* Container for filters */
+.menu-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0 2rem;
+  justify-content: center;
+}
+
+.menu-filters input,
+.menu-filters select {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--first-color);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.menu-filters input:focus,
+.menu-filters select:focus {
+  border-color: var(--first-color-alt);
+}
+
+/* Grid layout for pizza items */
+.menu-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Pizza Card Styling */
+.menu-card {
+  background: var(--white-color);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px hsla(353, 100%, 8%, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px hsla(353, 100%, 8%, 0.2);
+}
+
+.menu-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.menu-card__content {
+  padding: 1rem;
+  text-align: center;
+}
+
+.menu-card__title {
+  font-family: var(--second-font);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--title-color);
+}
+
+.menu-card__desc {
+  font-size: var(--normal-font-size);
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.menu-card__nutrition {
+  font-size: 0.75rem;
+  color: var(--text-color-light);
+  margin-bottom: 1rem;
+}
+
+.menu-card__price {
+  font-family: var(--second-font);
+  font-size: var(--h2-font-size);
+  color: var(--first-color);
+}
+.menu {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 240, 230, 0.7),
+    rgba(255, 228, 210, 0.7)
+  );
+  backdrop-filter: blur(6px);
+  border-radius: 1rem;
+  margin-top: 2rem;
+  padding: 3rem 1rem;
+  box-shadow: 0 8px 24px hsla(0, 0%, 0%, 0.1);
+}
+.menu__filters {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.menu__search input {
+  width: 300px;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--text-color-light);
+  border-radius: 4rem;
+  font-size: var(--normal-font-size);
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.menu__search input:focus {
+  border-color: var(--first-color);
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+}
+
+/* Grid layout for pizzas */
+.menu__grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* Pizza Card */
+.menu__card {
+  background-color: var(--white-color);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.menu__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px hsla(0, 0%, 0%, 0.2);
+}
+
+/* Pizza image */
+.menu__card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Card content */
+.menu__card-content {
+  padding: 1rem;
+  text-align: center;
+}
+.menu__card-title {
+  font-family: var(--second-font);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--title-color);
+}
+.menu__card-desc {
+  font-size: var(--normal-font-size);
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+.menu__card-price {
+  font-family: var(--second-font);
+  font-size: 1.25rem;
+  color: var(--first-color);
+}
+
+.no-results {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  color: var(--title-color);
+}
